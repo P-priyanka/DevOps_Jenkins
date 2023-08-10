@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #1d1f21;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-container {
+            background-color: #292b2d;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .signup-container:hover {
+            transform: scale(1.05);
+        }
+        .signup-container h2 {
+            margin-bottom: 20px;
+            color: #66d9ef;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #a6e22e;
+        }
+        input[type="email"], input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            background-color: #3e3f41;
+            color: #f8f8f2;
+        }
+        button {
+            background-color: #a6e22e;
+            color: #272822;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #81c784;
+        }
+        .password-conditions {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #888;
+        }
+        .signin-link {
+            color: #66d9ef;
+            text-decoration: none;
+            margin-top: 15px;
+            display: block;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        .signin-link:hover {
+            color: #5ccfe6;
+        }
+        .error-message {
+            color: #e74c3c;
+            margin-top: 5px;
+            font-size: 14px;
+            display: none;
+        }
+        .show-password {
+            margin-top: 5px;
+            color: #66d9ef;
+            font-size: 12px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById("password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var passwordConditions = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+            var errorMessage = document.getElementById("error-message");
+
+            if (!passwordConditions.test(password)) {
+                errorMessage.style.display = "block";
+                return false;
+            } else {
+                errorMessage.style.display = "none";
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create an Account</h2>
+        <form action="your_server_side_signup_script.php" method="POST" onsubmit="return validatePassword()">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <span class="show-password" onclick="togglePasswordVisibility()">Show Password</span>
+                <div class="password-conditions">
+                    Password must be at least 8 characters long and contain a mix of letters, numbers, and symbols.
+                </div>
+                <div class="error-message" id="error-message">
+                    Password must meet the conditions.
+                </div>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <a class="signin-link" href="login.html">Already have an account? Sign in</a>
+    </div>
+</body>
+</html>

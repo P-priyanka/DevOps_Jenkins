@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #1d1f21;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: #292b2d;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .login-container:hover {
+            transform: scale(1.05);
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #66d9ef;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #a6e22e;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            background-color: #3e3f41;
+            color: #f8f8f2;
+        }
+        button {
+            background-color: #a6e22e;
+            color: #272822;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #81c784;
+        }
+        .signup-link,
+        .forgot-password {
+            color: #66d9ef;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        .signup-link:hover,
+        .forgot-password:hover {
+            color: #5ccfe6;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Access Granted</h2>
+        <form action="your_server_side_script.php" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Passcode</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Log In</button>
+            <a class="signup-link" href="signup.html">New? Create an Account || </a>
+            <a class="forgot-password" href="forgot_password.html">Forgot Password?</a>
+        </form>
+    </div>
+</body>
+</html>
